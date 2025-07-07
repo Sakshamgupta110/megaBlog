@@ -21,14 +21,22 @@ function App() {
         dispatch(logout())
       }
     })
-    .finally(()=> setLoading(false))
-    ,[]})
-     
+    .finally(()=> {
+      setLoading(false)
+      console.log('Loading finished');
+    })
+  },[])
+   
+   if(loading)
+   {
+     return <div style={{color: 'white', textAlign: 'center', marginTop: '2rem'}}>Loading... (test message)</div>;
+   }
    if(!loading)
    {
      return (
       <div className="min-h-screen flex-wrap content-between bg-gray-600">
         <div className='w-full block'>
+          <div style={{color: 'yellow', textAlign: 'center', margin: '1rem'}}>Test: App is rendering!</div>
           <Header/>
           <main>
             //handle later
@@ -37,10 +45,6 @@ function App() {
         </div>
       </div>
      )
-   }
-   else
-   {
-    return null;
    }
 }
 
